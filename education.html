@@ -27,6 +27,270 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body{
+            background: #081b29;
+            color: #ededed;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* BLURS */
+
+        .blur{
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+        }
+
+        .blur1{
+            width: 320px;
+            height: 320px;
+            background: #0ef;
+            top: -100px;
+            left: -100px;
+            opacity: 0.18;
+        }
+
+        .blur2{
+            width: 320px;
+            height: 320px;
+            background: #7f5af0;
+            bottom: -100px;
+            right: -100px;
+            opacity: 0.18;
+        }
+
+        /* HEADER */
+
+        .header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 22px 10%;
+            background: rgba(8, 27, 41, 0.75);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo{
+            font-size: 28px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .navbar a{
+            display: inline-block;
+            font-size: 18px;
+            color: #ededed;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 35px;
+            transition: .3s;
+        }
+
+        .navbar a:hover,
+        .navbar a.active{
+            color: #0ef;
+        }
+
+        /* EDUCATION SECTION */
+
+        .education-page{
+            width: 100%;
+            min-height: 100vh;
+            padding: 150px 10% 80px;
+        }
+
+        .page-title{
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .small-title{
+            color: #0ef;
+            font-size: 15px;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .page-title h1{
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .page-title h1 span{
+            color: #0ef;
+        }
+
+        .page-title p{
+            color: #b8c6d1;
+            font-size: 18px;
+        }
+
+        /* EDUCATION GRID */
+
+        .education-grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        /* EDUCATION CARD */
+
+        .education-card{
+            position: relative;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(18px);
+            border-radius: 28px;
+            padding: 35px 30px;
+            overflow: hidden;
+            transition: 0.4s ease;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+        }
+
+        .education-card::before{
+            content: '';
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background: rgba(0,238,255,0.08);
+            border-radius: 50%;
+            top: -80px;
+            right: -80px;
+        }
+
+        .education-card:hover{
+            transform: translateY(-12px);
+            border: 1px solid rgba(0,238,255,0.4);
+            box-shadow: 0 10px 35px rgba(0,238,255,0.15);
+        }
+
+        /* ICON */
+
+        .education-icon{
+            width: 75px;
+            height: 75px;
+            border-radius: 20px;
+            background: linear-gradient(135deg,#0ef,#2563eb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+            box-shadow: 0 8px 25px rgba(0,238,255,0.25);
+        }
+
+        .education-icon i{
+            font-size: 38px;
+            color: #fff;
+        }
+
+        /* CONTENT */
+
+        .education-card h2{
+            font-size: 24px;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .education-card h3{
+            color: #0ef;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .education-details{
+            margin-bottom: 20px;
+        }
+
+        .education-details p{
+            color: #c9d6df;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .education-details strong{
+            color: #fff;
+        }
+
+        .education-description{
+            color: #c9d6df;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:991px){
+
+            .header{
+                padding: 20px 5%;
+            }
+
+            .education-page{
+                padding: 140px 5% 70px;
+            }
+
+        }
+
+        @media(max-width:768px){
+
+            .page-title h1{
+                font-size: 45px;
+            }
+
+            .navbar a{
+                margin-left: 18px;
+                font-size: 16px;
+            }
+
+        }
+
+        @media(max-width:480px){
+
+            .header{
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .navbar{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page-title h1{
+                font-size: 34px;
+            }
+
+            .page-title p{
+                font-size: 15px;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 <body>
@@ -65,27 +329,35 @@
 
     <!-- EDUCATION SECTION -->
 
-    <section class="education-section">
+    <section class="education-page">
 
-        <div class="education-heading">
+        <div class="page-title">
+
+            <p class="small-title">
+
+                MY EDUCATION
+
+            </p>
 
             <h1>
 
-                My <span>Education</span>
+                Academic <span>Journey</span>
 
             </h1>
 
             <p>
 
-                Academic qualifications and educational journey.
+                My educational qualifications and academic background.
 
             </p>
 
         </div>
 
-        <div class="education-container">
+        <!-- EDUCATION GRID -->
 
-            <!-- GRADUATION -->
+        <div class="education-grid">
+
+            <!-- BCA -->
 
             <div class="education-card">
 
@@ -125,9 +397,8 @@
 
                 <p class="education-description">
 
-                    Pursuing Bachelor of Computer Applications with strong focus on
-                    programming, software development, frontend technologies and
-                    modern responsive web development.
+                 Completed Bachelor of Computer Applications with strong focus on programming,
+                    software development, frontend technologies and responsive web development.
 
                 </p>
 
@@ -179,8 +450,8 @@
 
                 <p class="education-description">
 
-                    Completed higher secondary education in Science stream with
-                    strong analytical and logical problem-solving foundation.
+                    Completed higher secondary education in Science stream with strong analytical,
+                    logical reasoning and problem-solving foundation.
 
                 </p>
 
@@ -227,7 +498,7 @@
                 <p class="education-description">
 
                     Built strong academic fundamentals and developed early interest
-                    in technology, computers and software development.
+                    in computers, programming and modern technology.
 
                 </p>
 
