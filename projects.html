@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Projects | Amritanshu</title>
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="stylesheet.css">
+
+    <!-- BOXICONS -->
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- GOOGLE FONT -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body{
+            background: #081b29;
+            color: #ededed;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* BLURS */
+
+        .blur{
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+        }
+
+        .blur1{
+            width: 320px;
+            height: 320px;
+            background: #0ef;
+            top: -100px;
+            left: -100px;
+            opacity: 0.18;
+        }
+
+        .blur2{
+            width: 320px;
+            height: 320px;
+            background: #7f5af0;
+            bottom: -100px;
+            right: -100px;
+            opacity: 0.18;
+        }
+
+        /* HEADER */
+
+        .header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 22px 10%;
+            background: rgba(8, 27, 41, 0.75);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo{
+            font-size: 28px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .navbar a{
+            display: inline-block;
+            font-size: 18px;
+            color: #ededed;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 35px;
+            transition: .3s;
+        }
+
+        .navbar a:hover,
+        .navbar a.active{
+            color: #0ef;
+        }
+
+        /* PROJECT SECTION */
+
+        .projects-page{
+            width: 100%;
+            min-height: 100vh;
+            padding: 150px 10% 80px;
+        }
+
+        .page-title{
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .small-title{
+            color: #0ef;
+            font-size: 15px;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .page-title h1{
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .page-title h1 span{
+            color: #0ef;
+        }
+
+        .page-title p{
+            color: #b8c6d1;
+            font-size: 18px;
+        }
+
+        /* PROJECT GRID */
+
+        .project-grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        /* PROJECT CARD */
+
+        .project-card{
+            position: relative;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(18px);
+            border-radius: 28px;
+            padding: 35px 30px;
+            overflow: hidden;
+            transition: 0.4s ease;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+            text-decoration: none;
+            color: #ededed;
+            display: block;
+        }
+
+        .project-card::before{
+            content: '';
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background: rgba(0,238,255,0.08);
+            border-radius: 50%;
+            top: -80px;
+            right: -80px;
+        }
+
+        .project-card:hover{
+            transform: translateY(-12px);
+            border: 1px solid rgba(0,238,255,0.4);
+            box-shadow: 0 10px 35px rgba(0,238,255,0.15);
+        }
+
+        /* ICON */
+
+        .project-icon{
+            width: 75px;
+            height: 75px;
+            border-radius: 20px;
+            background: linear-gradient(135deg,#0ef,#2563eb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+            box-shadow: 0 8px 25px rgba(0,238,255,0.25);
+        }
+
+        .project-icon i{
+            font-size: 38px;
+            color: #fff;
+        }
+
+        /* CONTENT */
+
+        .project-card h2{
+            font-size: 25px;
+            line-height: 1.4;
+            margin-bottom: 18px;
+            color: #fff;
+        }
+
+        .project-card p{
+            color: #c9d6df;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:991px){
+
+            .header{
+                padding: 20px 5%;
+            }
+
+            .projects-page{
+                padding: 140px 5% 70px;
+            }
+
+        }
+
+        @media(max-width:768px){
+
+            .page-title h1{
+                font-size: 45px;
+            }
+
+            .navbar a{
+                margin-left: 18px;
+                font-size: 16px;
+            }
+
+        }
+
+        @media(max-width:480px){
+
+            .header{
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .navbar{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page-title h1{
+                font-size: 34px;
+            }
+
+            .page-title p{
+                font-size: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- BLURS -->
+
+    <div class="blur blur1"></div>
+
+    <div class="blur blur2"></div>
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <a href="index.html" class="logo">
+
+            Amritanshu.
+
+        </a>
+
+        <nav class="navbar">
+
+            <a href="index.html">Home</a>
+
+            <a href="education.html">Education</a>
+
+            <a href="projects.html" class="active">Projects</a>
+
+            <a href="index.html#contact">Contact</a>
+
+        </nav>
+
+    </header>
+
+    <!-- PROJECT SECTION -->
+
+    <section class="projects-page">
+
+        <div class="page-title">
+
+            <p class="small-title">
+
+                MY WORKS
+
+            </p>
+
+            <h1>
+
+                Featured <span>Projects</span>
+
+            </h1>
+
+            <p>
+
+                Some projects developed using Frontend, ASP.NET and Machine Learning.
+
+            </p>
+
+        </div>
+
+        <!-- PROJECT GRID -->
+
+        <div class="project-grid">
+
+            <!-- PROJECT 1 -->
+
+            <a href="https://github.com/amritanshu-27"
+               target="_blank"
+               class="project-card">
+
+                <div class="project-icon">
+
+                    <i class='bx bx-plus-medical'></i>
+
+                </div>
+
+                <h2>
+
+                    Online Doctor Appointment System
+
+                </h2>
+
+                <p>
+
+                    Developed using HTML, CSS and JavaScript with responsive UI and smooth appointment booking functionality.
+
+                </p>
+
+            </a>
+
+            <!-- PROJECT 2 -->
+
+            <a href="https://github.com/amritanshu-27"
+               target="_blank"
+               class="project-card">
+
+                <div class="project-icon">
+
+                    <i class='bx bx-data'></i>
+
+                </div>
+
+                <h2>
+
+                    Student Registration System
+
+                </h2>
+
+                <p>
+
+                    Developed using ASP.NET and C# with advanced registration system and student management features.
+
+                </p>
+
+            </a>
+
+            <!-- PROJECT 3 -->
+
+            <a href="https://github.com/amritanshu-27"
+               target="_blank"
+               class="project-card">
+
+                <div class="project-icon">
+
+                    <i class='bx bx-face'></i>
+
+                </div>
+
+                <h2>
+
+                    Attendance Through Face Recognition
+
+                </h2>
+
+                <p>
+
+                    Machine Learning based attendance system using face recognition technology for automated attendance marking.
+
+                </p>
+
+            </a>
+
+            <!-- PROJECT 4 -->
+
+            <a href="https://github.com/amritanshu-27"
+               target="_blank"
+               class="project-card">
+
+                <div class="project-icon">
+
+                    <i class='bx bx-code-alt'></i>
+
+                </div>
+
+                <h2>
+
+                    Portfolio Website
+
+                </h2>
+
+                <p>
+
+                    Modern portfolio website built using HTML, CSS and JavaScript with responsive design and smooth animations.
+
+                </p>
+
+            </a>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>
