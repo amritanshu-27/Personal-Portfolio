@@ -20,43 +20,87 @@ var typed = new Typed(".text", {
 
 });
 
+
+
+
 // ================= CONTACT FORM =================
 
 const form = document.getElementById("contact-form");
 
 const popup = document.getElementById("success-popup");
 
-if(form){
 
-    form.addEventListener("submit", async function(e){
+// CHECK IF FORM EXISTS
+
+if (form) {
+
+    form.addEventListener("submit", async function (e) {
+
+        // STOP PAGE REFRESH
 
         e.preventDefault();
 
+        // CREATE FORM DATA
+
         const formData = new FormData(form);
 
-        const response = await fetch(form.action, {
+        try {
 
-            method: "POST",
+            // SEND FORM DATA
 
-            body: formData,
+            const response = await fetch(form.action, {
 
-            headers: {
-                'Accept': 'application/json'
+                method: "POST",
+
+                body: formData,
+
+                headers: {
+
+                    Accept: "application/json"
+
+                }
+
+            });
+
+            // SUCCESS
+
+            if (response.ok) {
+
+                // SHOW SUCCESS POPUP
+
+                popup.classList.add("show-popup");
+
+                // RESET FORM
+
+                form.reset();
+
+                // HIDE POPUP AFTER 3 SECONDS
+
+                setTimeout(() => {
+
+                    popup.classList.remove("show-popup");
+
+                }, 3000);
+
             }
 
-        });
+            // FAILED
 
-        if(response.ok){
+            else {
 
-            popup.classList.add("show-popup");
+                alert("Failed to send message!");
 
-            form.reset();
+            }
 
-            setTimeout(() => {
+        }
 
-                popup.classList.remove("show-popup");
+        // ERROR HANDLING
 
-            }, 3000);
+        catch (error) {
+
+            alert("Something went wrong!");
+
+            console.log(error);
 
         }
 
